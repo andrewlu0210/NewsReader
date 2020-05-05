@@ -1,0 +1,6 @@
+# Intellij Project Files
+.idea
+*.iml
+target/
+*.class
+src/test/
