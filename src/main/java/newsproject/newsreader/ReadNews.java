@@ -10,7 +10,7 @@ import java.util.List;
 public class ReadNews {
     static String account = "news";
     static String passwd = "news";
-    static String dbHost = "10.231.17.61";
+    static String dbHost = "10.231.8.177";
     static String dbName = "newsDB";
 
     public static void main(String[] args){

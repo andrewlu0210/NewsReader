@@ -55,17 +55,20 @@ public class UDNParser {
         System.out.println("Getting "+item.getTitle()+"["+item.getDateTime()+"]");
         TagNode rootNode = HtmlCleanerUtils.getRootNode(cleaner, item.getLink());
         TagNode article = HtmlCleanerUtils.getFirst(rootNode, "//section[@class='article-content__editor']");
-        TagNode[] ps = article.getChildTags();
         String content = "";
-        for(TagNode node:ps){
-            if(node.getName().equalsIgnoreCase("p")){
-                String text = node.getText().toString().trim();
-                if(!text.equals("")){
-                    content = content+"\n"+text;
+        if(article!=null){
+            // Set content to empty if xpath selection is failed
+            TagNode[] ps = article.getChildTags();
+            for(TagNode node:ps){
+                if(node.getName().equalsIgnoreCase("p")){
+                    String text = node.getText().toString().trim();
+                    if(!text.equals("")){
+                        content = content+"\n"+text;
+                    }
                 }
             }
+            content = content.trim();
         }
-        content = content.trim();
         item.setContent(content);
         //System.out.println(content);
     }
