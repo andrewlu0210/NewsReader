@@ -8,12 +8,16 @@ import java.util.Date;
 import java.util.List;
 
 public class ReadNews {
-    static String account = "news";
-    static String passwd = "news";
-    static String dbHost = "10.231.8.177";
-    static String dbName = "newsDB";
 
     public static void main(String[] args){
+        if(args.length!=4){
+            System.out.println("USAGE: java newsproject.newsreader.ReadNews dbHost dbName account password");
+            return;
+        }
+        String dbHost = args[0].trim();
+        String dbName = args[1].trim();
+        String account = args[2].trim();
+        String passwd = args[3].trim();
         System.out.println("Getting UDN News...");
         NewsItemRepo repo = new NewsItemRepo(dbHost, dbName, account, passwd);
         try{
