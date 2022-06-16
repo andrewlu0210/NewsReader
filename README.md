@@ -23,6 +23,7 @@ ENTRYPOINT ["java","-jar","app.jar","dbHost","dbName","account","password"]
 ```
 - Build and Run
 ```Shell
+> mvn clean package
 > docker build -t news-reader .
 > docker run --rm -e "TZ=Asia/Taipei" news-reader
 ```
